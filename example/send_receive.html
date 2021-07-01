@@ -99,11 +99,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 			{
 				var txt = document.getElementById("txtMsg");
 				var log = document.getElementById("taLog");
-
-				ws.send(txt.value);
-				log.value += ("Send: " + txt.value + "\n");
-				txt.value = "";
-				scoll_to_bottom();
+				if (txt.value.length > 0)
+				{	
+					ws.send(txt.value);
+					log.value += ("Send: " + txt.value + "\n");
+					txt.value = "";
+					scoll_to_bottom();
+				}
 			}
 		};
 	});

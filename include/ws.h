@@ -25,6 +25,12 @@
 #ifndef WS_H
 #define WS_H
 
+	#if 1
+	#define DEBUG_OUT(fmt, args...)  fprintf(stdout, "[%s:%d]"fmt, __FILE__, __LINE__, ##args)
+	#else
+	#define DEBUG_OUT(fmt, args...) 
+	#endif
+
 	#include <stdbool.h>
 	#include <stdint.h>
 	#include <inttypes.h>

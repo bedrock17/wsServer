@@ -1213,8 +1213,9 @@ static void *ws_establishconnection(void *vsock)
 	{
 		/* Text/binary event. */
 		if ((wfd.frame_type == WS_FR_OP_TXT || wfd.frame_type == WS_FR_OP_BIN) &&
-			!wfd.error)
+			!wfd.error && wfd.frame_size > 0)
 		{
+			DEBUG_OUT("on massage handle %d, frame size %d\n", sock, wfd.frame_size);
 			ports[p_index].events.onmessage(
 				sock, wfd.msg, wfd.frame_size, wfd.frame_type);
 		}
